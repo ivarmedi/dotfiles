@@ -1,0 +1,52 @@
+[user]
+  email=ivar@bloglovin.com
+  name=Ivar Larsson
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[code]
+  editor = vim
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+[push]
+  default = simple
+[alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  s = status
+  st = status
+  fr = !git fetch && git rebase
+  a = !git add . && git status
+  au = !git add -u . && git status
+  aa = !git add . && git add -u . && git status
+  c = commit
+  cob = checkout -b
+  ph = push -u origin
+  cm = !git add -A && git commit -m
+  ca = commit --amend # careful
+  ac = !git add . && git commit
+  acm = !git add . && git commit -m
+  l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+  ll = log --stat --abbrev-commit
+  d = diff --color-words
+  dh = diff --color-words head
+  ma = checkout master
+  develop = checkout develop
+  spull = svn rebase
+  spush = svn dcommit
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+  cleanup = !git remote prune origin && git gc && git clean -dfx && git stash clear
+  who = shortlog -n -s --no-merges
+  rmb = !sh -c 'git branch -D $1 && git push origin :$1’ -
